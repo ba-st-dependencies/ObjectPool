@@ -15,6 +15,12 @@ Class {
 	#package : 'ObjectPool-GS64'
 }
 
+{ #category : 'instance creation' }
+OPBasicPool class >> new [
+
+	^ super new initialize
+]
+
 { #category : 'object-lifecycle' }
 OPBasicPool >> activateObject: anObject [
 

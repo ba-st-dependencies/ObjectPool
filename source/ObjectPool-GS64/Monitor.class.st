@@ -13,6 +13,12 @@ Class {
 	#package : 'ObjectPool-GS64'
 }
 
+{ #category : 'instance creation' }
+Monitor class >> new [
+
+	^ super new initialize
+]
+
 { #category : 'private' }
 Monitor >> checkOwnerProcess [
 	self isOwnerProcess
