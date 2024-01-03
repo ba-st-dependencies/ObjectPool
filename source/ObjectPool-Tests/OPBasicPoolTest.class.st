@@ -99,9 +99,10 @@ OPBasicPoolTest >> testMaxActiveObjects [
 { #category : 'tests' }
 OPBasicPoolTest >> testMaxActiveObjectsOneDoesNotBlockFirstBorrow [
 	"Test that 1 maxActiveObjects can return one object"
+
 	pool creator: [ Object new ].
 	pool maxActiveObjects: 1.
-	self should: [self borrowOne] notTakeMoreThan: 0.1 seconds asDuration.
+	self should: [ self borrowOne ] notTakeMoreThanMilliseconds: 100
 ]
 
 { #category : 'tests' }
