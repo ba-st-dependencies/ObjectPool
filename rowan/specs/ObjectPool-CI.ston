@@ -1,0 +1,14 @@
+RwLoadSpecificationV2 {
+  #specName: 'ObjectPool-CI',
+  #projectName : 'ObjectPool',
+  #diskUrl : 'ObjectPool',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Tests'
+  ],
+  #customConditionalAttributes : [
+    'tests',
+    'sunit'
+  ],
+  #comment : 'Loading spec for the continuous integration setup'
+}

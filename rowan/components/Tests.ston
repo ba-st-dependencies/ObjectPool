@@ -1,0 +1,23 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Tests',
+  #condition : 'tests',
+  #projectNames : [ ],
+  #componentNames : [
+    'Deployment'
+  ],
+  #packageNames : [
+    'ObjectPool-Tests',
+    'ObjectPool-GS64-Tests'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'ObjectPool-Tests' : { 'symbolDictName' : 'ObjectPool' },
+          'ObjectPool-GS64-Tests' : { 'symbolDictName' : 'ObjectPool' }
+        }
+      }
+    }
+  },
+  #comment : ''
+}

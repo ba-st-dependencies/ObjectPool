@@ -1,0 +1,22 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Deployment',
+  #projectNames : [ 
+    'Buoy'
+  ],
+  #componentNames : [ ],
+  #packageNames : [
+    'ObjectPool',
+    'ObjectPool-GS64'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'ObjectPool' : { 'symbolDictName' : 'ObjectPool' },
+          'ObjectPool-GS64' : { 'symbolDictName' : 'ObjectPool' }
+        }
+      }
+    }
+  },
+  #comment : ''
+}

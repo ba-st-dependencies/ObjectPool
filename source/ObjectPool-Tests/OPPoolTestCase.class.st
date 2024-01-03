@@ -6,36 +6,37 @@ Instance Variables:
 	borrowed	<OrderedCollection>	Collection that contains currently borrowed objects. #borrowOne adds one from pool and #returnOne 										removes one and returns it back to pool.
 "
 Class {
-	#name : #OPPoolTestCase,
-	#superclass : #TestCase,
+	#name : 'OPPoolTestCase',
+	#superclass : 'TestCase',
 	#instVars : [
 		'pool',
 		'borrowed'
 	],
-	#category : 'ObjectPool-Tests'
+	#category : 'ObjectPool-Tests',
+	#package : 'ObjectPool-Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPPoolTestCase class >> isAbstract [
 	^self == OPPoolTestCase 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPPoolTestCase >> borrowOne [
 	^borrowed add: pool borrow.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPPoolTestCase >> poolClass [
 	self subclassResponsibility.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPPoolTestCase >> returnOne [
 	^pool return: borrowed removeLast.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPPoolTestCase >> setUp [
 	pool := self poolClass new.
 	borrowed := OrderedCollection new.
