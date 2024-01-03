@@ -1,6 +1,8 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Deployment',
-  #projectNames : [ ],
+  #projectNames : [ 
+    'Buoy'
+  ],
   #componentNames : [ ],
   #packageNames : [
     'ObjectPool',
