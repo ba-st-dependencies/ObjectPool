@@ -40,7 +40,7 @@ OPPoolTest >> testBorrowReusesReturned [
 	borrowedObject := self borrowOne.
 	self returnOne.
 	secondBorrowedObject := self borrowOne.
-	^ self deny: borrowedObject equals: secondBorrowedObject
+	self assert: borrowedObject equals: secondBorrowedObject
 ]
 
 { #category : 'tests' }

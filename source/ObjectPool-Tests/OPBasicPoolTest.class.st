@@ -93,7 +93,7 @@ OPBasicPoolTest >> testMaxActiveObjects [
 	] fork.
 	semaphore wait.
 	runTime := Time millisecondsToRun: [ self borrowOne ].
-	self assert: runTime > 75 milliSeconds
+	self assert: runTime > 75
 ]
 
 { #category : 'tests' }
