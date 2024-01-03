@@ -1,13 +1,22 @@
 # ObjectPool
 
-[![GitHub release](https://img.shields.io/github/release/pharo-ide/ObjectPool.svg)](https://github.com/pharo-ide/ObjectPool/releases/latest)
-[![Unit Tests](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests.yml)
-[![Coverage Status](https://codecov.io/github/ba-st-dependencies/ObjectPool/coverage.svg?branch=master)](https://codecov.io/gh/ba-st-dependencies/ObjectPool/branch/master)
-[![Baseline groups](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-groups.yml)
+A fork of [ObjectPool](https://github.com/pharo-ide/ObjectPool) to be used as a dependency in ba-st for GS/64 & Pharo.
 
-[![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
+The `upstream` branch is supposed to track the changes in the master branch of pharo-ide/ObjectPool
+
+The `release-candidate` is the branch where our changes land before releasing a version.
+
+[![Pharo - Unit Tests](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests.yml)
+[![GS64 - Unit Tests](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests-gs64.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/unit-tests-gs64.yml)
+[![Coverage Status](https://codecov.io/github/ba-st-dependencies/ObjectPool/coverage.svg?branch=master)](https://codecov.io/gh/ba-st-dependencies/ObjectPool/branch/master)
+
+[![Baseline groups](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-groups.yml)
+[![GS64 Components](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-gs64-components.yml/badge.svg)](https://github.com/ba-st-dependencies/ObjectPool/actions/workflows/loading-gs64-components.yml)
+
+[![GitHub release](https://img.shields.io/github/release/ba-st-dependencies/ObjectPool.svg)](https://github.com/ba-st-dependencies/ObjectPool/releases/latest)
+
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
 
-This repository mirrors pharo-ide/ObjectPool
+[![GS64 3.7.0](https://img.shields.io/badge/GS64-3.7.0-informational)](https://gemtalksystems.com/products/gs64/)
