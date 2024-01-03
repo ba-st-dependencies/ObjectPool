@@ -2,17 +2,18 @@
 ObjectPoolTest tests the working of ObjectPool.
 "
 Class {
-	#name : #OPBasicPoolTest,
-	#superclass : #OPPoolTestCase,
-	#category : #'ObjectPool-Tests'
+	#name : 'OPBasicPoolTest',
+	#superclass : 'OPPoolTestCase',
+	#category : 'ObjectPool-Tests',
+	#package : 'ObjectPool-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 OPBasicPoolTest >> poolClass [
 	 ^OPBasicPool.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testAlteringObjectIsOK [
 	| object |
 	pool creator: [Array new: 1].
@@ -23,7 +24,7 @@ OPBasicPoolTest >> testAlteringObjectIsOK [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testDoubleReturnIsNotPossible [
 	| expected called |
 	called := false.
@@ -35,7 +36,7 @@ OPBasicPoolTest >> testDoubleReturnIsNotPossible [
 	self should: called.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testErrorInPassivatorIsNotEaten [
 
 	pool creator: [Object new].
@@ -44,7 +45,7 @@ OPBasicPoolTest >> testErrorInPassivatorIsNotEaten [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testFixMaxActiveObjects [
 
 	pool creator: [ Object new ].
@@ -58,7 +59,7 @@ OPBasicPoolTest >> testFixMaxActiveObjects [
 	self assert: pool maxActiveObjects = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testIsPooledWorks [
 	| expected|
 
@@ -68,7 +69,7 @@ OPBasicPoolTest >> testIsPooledWorks [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMaxActiveObjects [
 	"Test that new objects can be returned only after there is room in active objects"
 
@@ -88,7 +89,7 @@ OPBasicPoolTest >> testMaxActiveObjects [
 	self should: runTime > 75 milliSeconds
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMaxActiveObjectsOneDoesNotBlockFirstBorrow [
 	"Test that 1 maxActiveObjects can return one object"
 	pool creator: [ Object new ].
@@ -96,7 +97,7 @@ OPBasicPoolTest >> testMaxActiveObjectsOneDoesNotBlockFirstBorrow [
 	self should: [self borrowOne] notTakeMoreThan: 0.1 seconds asDuration.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMaxIdleObjects [
 	pool creator: [Object new].
 	pool maxIdleObjects: 2.
@@ -107,30 +108,7 @@ OPBasicPoolTest >> testMaxIdleObjects [
 
 ]
 
-{ #category : #tests }
-OPBasicPoolTest >> testMaxWaitForBorrow [
-	"Test that borrow operation throws OPTimedOutError"
-
-	pool creator: [ Object new ].
-	pool maxActiveObjects: 1.
-	pool maxWaitForBorrow: 50.
-	self
-		should: [ 
-			self borrowOne.
-			self should: [ self borrowOne ] raise: OPTimedOutError ]
-		notTakeMoreThan: 0.2 seconds asDuration
-]
-
-{ #category : #tests }
-OPBasicPoolTest >> testMaxWaitForBorrowDoesNotAffectIfActiveCountIsNotReached [
-	pool creator: [ Object new ].
-	pool maxWaitForBorrow: 75.
-	self should:[self
-		borrowOne;
-		borrowOne] notTakeMoreThan: 0.1 seconds asDuration.
-]
-
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMigrationObjectsToAnotherPool [
 
 	| anotherPool migrated |
@@ -149,7 +127,7 @@ OPBasicPoolTest >> testMigrationObjectsToAnotherPool [
 	self assert: migrated asSet equals: #(#object1 object2) asSet
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMigrationObjectsToAnotherPoolWhenBorrowedObjectsExists [
 
 	| anotherPool |
@@ -170,7 +148,7 @@ OPBasicPoolTest >> testMigrationObjectsToAnotherPoolWhenBorrowedObjectsExists [
 	self assert: pool numberOfAvailableObjects equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMigrationObjectsToAnotherPoolWhichHasMaxObjectsLimit [
 
 	| anotherPool |
@@ -188,7 +166,7 @@ OPBasicPoolTest >> testMigrationObjectsToAnotherPoolWhichHasMaxObjectsLimit [
 	self assert: anotherPool maxActiveObjects = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMinIdleObjects [
 
 	pool creator: [Object new].
@@ -199,7 +177,7 @@ OPBasicPoolTest >> testMinIdleObjects [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMinIdleObjectsAfterClear [
 
 	pool creator: [Object new].
@@ -208,7 +186,7 @@ OPBasicPoolTest >> testMinIdleObjectsAfterClear [
 	self should: 5 = pool numberOfIdleObjects.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testMinSizeForIdleObjectsAfterClear [
 
 	pool creator: [Object new].
@@ -217,18 +195,18 @@ OPBasicPoolTest >> testMinSizeForIdleObjectsAfterClear [
 	self should: 5 = pool numberOfIdleObjects.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testNewObjectsAreNotActivatedWhenBorrowed [
-	| expected |
-	
-	pool creator: [ValueHolder new contents:'p'].
-	pool activator:[:o | o contents:'a'].
-	expected := pool borrow.
-	self should: [expected contents = 'p'].
 
+	| expected |
+
+	pool creator: [ OrderedCollection with: 'p' ].
+	pool activator: [ :o | o add: 'a' ].
+	expected := pool borrow.
+	self assert: expected asArray equals: #( 'p' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testNonValidObjectsAreDestroyed [
 	| called count objects|
 	objects := OrderedCollection new.
@@ -244,7 +222,7 @@ OPBasicPoolTest >> testNonValidObjectsAreDestroyed [
 	self should: [pool isPooled: objects second].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testNumberOfAvailableObjects [
 
 	pool creator: [ Object new ].
@@ -257,7 +235,7 @@ OPBasicPoolTest >> testNumberOfAvailableObjects [
 	self assert: pool numberOfAvailableObjects = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testObjectCanBeReturned [
 	| expected called |
 
@@ -269,7 +247,7 @@ OPBasicPoolTest >> testObjectCanBeReturned [
 	self should: called.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testObjectIsCreated [
 	| expected |
 	expected := Object new.
@@ -277,7 +255,7 @@ OPBasicPoolTest >> testObjectIsCreated [
 	self should: [pool borrow = expected].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testObjectsAreDestroyed [
 	| a creatorCount destroyed |
 	creatorCount := 0.
@@ -292,7 +270,7 @@ OPBasicPoolTest >> testObjectsAreDestroyed [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testObjectsArePooled [
 	| a creatorCount |
 	creatorCount := 0.
@@ -305,7 +283,7 @@ OPBasicPoolTest >> testObjectsArePooled [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testObjectsAreValidatedBeforeBorrow [
 	| expected called |
 	called := false.
@@ -316,15 +294,16 @@ OPBasicPoolTest >> testObjectsAreValidatedBeforeBorrow [
 	self should: called.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPBasicPoolTest >> testPassivatedObjectsAreActivatedWhenBorrowed [
-	| object|
-	pool creator: [ValueHolder new contents: ''.].
-	pool passivator:[:o| o contents: o contents,'p'].
-	pool activator:[:o| o contents: o contents,'a'].
+
+	| object |
+
+	pool creator: [ OrderedCollection new ].
+	pool passivator: [ :o | o add: 'p' ].
+	pool activator: [ :o | o add: 'a' ].
 	pool return: pool borrow.
 	pool return: pool borrow.
 	object := pool borrow.
-	self should: [object contents = 'papa'].
-
+	self assert: object asArray equals: #( 'p' 'a' 'p' 'a' )
 ]

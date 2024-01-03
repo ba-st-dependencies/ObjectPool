@@ -1,1 +1,1 @@
-Package { #name : #'ObjectPool-Tests' }
+Package { #name : 'ObjectPool-Tests' }

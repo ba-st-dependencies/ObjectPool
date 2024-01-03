@@ -1,15 +1,16 @@
 Class {
-	#name : #OPPoolTest,
-	#superclass : #OPPoolTestCase,
-	#category : 'ObjectPool-Tests'
+	#name : 'OPPoolTest',
+	#superclass : 'OPPoolTestCase',
+	#category : 'ObjectPool-Tests',
+	#package : 'ObjectPool-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 OPPoolTest >> poolClass [
 	 ^OPPoolStub.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testAddObjectIncreasesPool [
 	self should: 0 = pool numberOfIdleObjects.
 	self should: 0 = pool numberOfActiveObjects.
@@ -21,14 +22,14 @@ OPPoolTest >> testAddObjectIncreasesPool [
 	self should: 0 = pool numberOfActiveObjects.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testBorrowReturnsNonNil [
 	| borrowedObject |
 	borrowedObject := self borrowOne.
 	^self shouldnt: borrowedObject isNil. 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testBorrowReusesReturned [
 	| borrowedObject secondBorrowedObject |
 	borrowedObject := self borrowOne.
@@ -37,7 +38,7 @@ OPPoolTest >> testBorrowReusesReturned [
 	^self should: borrowedObject = secondBorrowedObject.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testClearDoesNotTouchActiveObjects [
 	self borrowOne;borrowOne.
 	self should: 2 = pool numberOfActiveObjects.
@@ -46,7 +47,7 @@ OPPoolTest >> testClearDoesNotTouchActiveObjects [
 	self returnOne; returnOne.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testClearEmptiesIdleObjects [
 	self borrowOne;returnOne.
 	self should: 1 = pool numberOfIdleObjects.
@@ -54,7 +55,7 @@ OPPoolTest >> testClearEmptiesIdleObjects [
 	self should: 0 = pool numberOfIdleObjects.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testIsPooled [
 	| object |
 	pool
@@ -66,7 +67,7 @@ OPPoolTest >> testIsPooled [
 	self shouldnt: (pool isPooled: object)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testNumberOfActiveObjects [
 	self should: 0 = pool numberOfActiveObjects.
 	self borrowOne.
@@ -80,7 +81,7 @@ OPPoolTest >> testNumberOfActiveObjects [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testNumberOfIdleObjects [
 	self should: 0 = pool numberOfIdleObjects.
 	self borrowOne.
@@ -94,14 +95,14 @@ OPPoolTest >> testNumberOfIdleObjects [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testReturnDoesNotAcceptObjectNonBorrowedObject [
 	| expected |
 	expected := Object new.
 	self should: [ pool return: expected ] raise: OPWrongPoolError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testReturnDoesNotAcceptSameObjectTwice [
 	| expected |
 	expected := pool borrow.
@@ -110,7 +111,7 @@ OPPoolTest >> testReturnDoesNotAcceptSameObjectTwice [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPPoolTest >> testWithPooled [
 	pool withPooled: [ :o | self should: 1 = pool numberOfActiveObjects ].
 	self should: 0 = pool numberOfActiveObjects.
