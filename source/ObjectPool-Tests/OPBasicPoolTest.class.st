@@ -10,7 +10,8 @@ Class {
 
 { #category : 'running' }
 OPBasicPoolTest >> poolClass [
-	 ^OPBasicPool.
+
+	^ OPBasicPool
 ]
 
 { #category : 'tests' }
