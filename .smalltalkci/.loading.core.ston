@@ -4,7 +4,8 @@ SmalltalkCISpec {
       #baseline : 'ObjectPool',
       #directory : '../source',
       #load : [ 'Core' ],
-      #platforms : [  #pharo ]
+      #platforms : [ #pharo ],
+      #failOn : [ #Warning ]
     }
   ],
   #testing : {
